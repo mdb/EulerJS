@@ -57,6 +57,27 @@ if (typeof Euler === 'undefined' || !Euler) {
 
                     return prod;
 
+                },
+
+                matchArrayItems: function (arrayOne, arrayTwo) {
+                    var arrayOneLength = arrayOne.length,
+                        arrayTwoLength = arrayTwo.length,
+                        a,
+                        b,
+                        matchedItems = [];
+
+                    for (a=0; a<arrayOneLength; a++) {
+                        for (b=0; b<arrayTwoLength; b++) {
+
+                            if (arrayOne[a] === arrayTwo[b]) {
+                                matchedItems.push(arrayTwo[b]);
+                                arrayTwo.pop(arrayTwo[b]); // side effect
+                            }
+                        }
+                    }
+
+                    return matchedItems;
+                    
                 }
             },
 
@@ -148,11 +169,31 @@ if (typeof Euler === 'undefined' || !Euler) {
 
             /*
              * What is the smallest number divisible by each of the numbers 1 to 20?
+             *
+             * 1. get a=[primes] & get comps=[comps] in array
+             * 2. take each a and multiply by each other a (a1, a2, etc) and if any aN * aM = b, push the b to c and pop it from b
+             * 3. with what is left in b, if bi % ai = 0, then bi/ai = x, then x % ai until it equals 0
+             * 
              */ 
             probFive: function (ceiling) {
                 var primes = getPrimesAndComps(ceiling).primes,
                     comps = getPrimesAndComps(ceiling).comps,
-                    primesProd = privMethods.arrayProd(primes);
+                    primesProd = privMethods.arrayProd(primes),
+                    finalList = privMethods.matchArrayItems(primes, comps),
+                    a,
+                    b;
+
+
+                /*
+                for (a=0; a<=primesProd.length; a++) {
+                    for (b=0; b<=comps.length; b++) {
+                        if (primesProd[a] === comps[b]) {
+                            finalList.push(comps[b]);
+                            comps.pop(comps[b]);
+                        }
+                    }
+                }
+                */
             }
         };
 
