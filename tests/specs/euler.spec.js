@@ -36,7 +36,17 @@ describe('Euler', function () {
             });
 
             it('throws an error if a non-numerical value found within the array its passed', function () {
-                expect(eulerDebug.arrayProd([3, false, 5])).toThrow('Non-numerical array value passed to arrayProd');
+                expect(function () { eulerDebug.arrayProd([3, false, 5]) }).toThrow('Non-numerical array value passed to arrayProd');
+            });
+        });
+
+        describe('matchArrayItems', function () {
+            
+            it('returns an array of all items which appear in each of two arrays', function () {
+                var a = [3, 5, 7, 10],
+                    b = [5, 6, 12, 2];
+
+                expect(eulerDebug.matchArrayItems(a, b)).toEqual([5]);
             });
         });
     });
