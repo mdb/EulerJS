@@ -78,6 +78,19 @@ if (typeof Euler === 'undefined' || !Euler) {
 
                     return matchedItems;
                     
+                },
+
+                isStringPalindrome: function (string) {
+                    var strLength = string.length,
+                        i;
+
+                    for (i=0; i<strLength; i++) {
+                        if (string.toLowerCase().charAt(i) !== string.toLowerCase().charAt(strLength - 1 - i)) {
+                            return false;
+                        }
+                    }
+
+                    return true;
                 }
             },
 
@@ -168,6 +181,33 @@ if (typeof Euler === 'undefined' || !Euler) {
             },
 
             /*
+             * Find the largest palindrome made from the product of two 3-digit numbers.
+             *
+             */
+            probFour: function (ceiling, floor) {
+                var i,
+                    prod;
+                
+                for (i=ceiling; i>=floor; i--) {
+                    for (b=i; b>=floor; b--) {
+                        prod = i * b;
+
+                        /*
+                        console.log('i: ', i);
+                        console.log('b: ', b);
+                        console.log('prod: ', prod + '\n');
+                        */
+
+                        if (privMethods.isStringPalindrome(prod.toString())) {
+                            return prod;
+                            break;
+                        }
+                    }
+
+                }
+            },
+
+            /*
              * What is the smallest number divisible by each of the numbers 1 to 20?
              *
              * 1. get a=[primes] & get comps=[comps] in array
@@ -179,21 +219,13 @@ if (typeof Euler === 'undefined' || !Euler) {
                 var primes = getPrimesAndComps(ceiling).primes,
                     comps = getPrimesAndComps(ceiling).comps,
                     primesProd = privMethods.arrayProd(primes),
-                    finalList = privMethods.matchArrayItems(primes, comps),
-                    a,
-                    b;
+                    finalList = privMethods.matchArrayItems(primes, comps);
 
-
-                /*
-                for (a=0; a<=primesProd.length; a++) {
-                    for (b=0; b<=comps.length; b++) {
-                        if (primesProd[a] === comps[b]) {
-                            finalList.push(comps[b]);
-                            comps.pop(comps[b]);
-                        }
+                    /* 
+                    for () {
+                        
                     }
-                }
-                */
+                    */
             }
         };
 

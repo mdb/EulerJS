@@ -25,6 +25,12 @@ describe('Euler', function () {
                 expect(euler.probThree(20)).toEqual(5);
             });
         });
+
+        describe('probFour', function () {
+            it('finds the largest palindrome made from the product of two 3-digit numbers', function () {
+                expect(euler.probFour(999, 100)).toEqual(906609);
+            });
+        });
     });
 
     describe('Euler private methods', function () {
@@ -47,6 +53,27 @@ describe('Euler', function () {
                     b = [5, 6, 12, 2];
 
                 expect(eulerDebug.matchArrayItems(a, b)).toEqual([5]);
+            });
+        });
+
+        describe('isStringPalindrome', function () {
+            
+            it('returns true if the string it is passed reads the same forwards and backwards', function () {
+                expect(eulerDebug.isStringPalindrome('madam')).toEqual(true);
+            });
+
+            it('returns true if the string it is passed reads the same forwards and backwards, inedependent of case', function () {
+                expect(eulerDebug.isStringPalindrome('Madam')).toEqual(true);
+                expect(eulerDebug.isStringPalindrome('maDam')).toEqual(true);
+            });
+
+            it('returns false if the string it is passed does not read the same forwards and backwards', function () {
+                expect(eulerDebug.isStringPalindrome('Mike')).toEqual(false);
+                expect(eulerDebug.isStringPalindrome('mIke')).toEqual(false);
+            });
+
+            it('returns false if the string it is passed does not read the same forwards and backwards', function () {
+                expect(eulerDebug.isStringPalindrome('123')).toEqual(false);
             });
         });
     });
