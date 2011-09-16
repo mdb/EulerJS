@@ -200,7 +200,8 @@ if (typeof Euler === 'undefined' || !Euler) {
                 return fibSum;
             },
 
-            /*
+            /* Problem 3:
+             *
              * Find the largest prime factor of a composite number.
              *
              * NOTE:
@@ -225,7 +226,8 @@ if (typeof Euler === 'undefined' || !Euler) {
                 return Math.max.apply(Math, primeFactors);
             },
 
-            /*
+            /* Problem 4:
+             *
              * Find the largest palindrome made from the product of two 3-digit numbers.
              * TODO: Make this puppy not crash browsers.
              *
@@ -250,7 +252,8 @@ if (typeof Euler === 'undefined' || !Euler) {
                 return largestPal;
             },
 
-            /*
+            /* Problem 5: TODO
+             *
              * What is the smallest number divisible by each of the numbers 1 to 20?
              *
              * 1. get primes=[primes] & get comps=[comps] in array
@@ -271,7 +274,8 @@ if (typeof Euler === 'undefined' || !Euler) {
                     */
             },
 
-            /*
+            /* Problem 6:
+             *
              * Find the difference between the sum of the squares of the first one
              * hundred natural numbers and the square of the sum.
              *
@@ -283,7 +287,8 @@ if (typeof Euler === 'undefined' || !Euler) {
                 return (squareOfSum - sumOfSquares);
             },
 
-            /*
+            /* Problem 7:
+             *
              * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, 
              * we can see that the 6th prime is 13
              *
