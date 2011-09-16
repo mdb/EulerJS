@@ -37,6 +37,14 @@ describe('Euler', function () {
                 expect(euler.probSix(1, 100)).toEqual(25164150);
             });
         });
+
+        describe('probSeven', function () {
+            it('when passed a number n, it returns the nth prime number', function () {
+                expect(euler.probSeven(6)).toEqual(13);
+                expect(euler.probSeven(7)).toEqual(17);
+                expect(euler.probSeven(8)).toEqual(19);
+            });
+        });
     });
 
     describe('Euler private methods', function () {
@@ -100,11 +108,11 @@ describe('Euler', function () {
                 expect(eulerDebug.isPrime(3)).toEqual(true);
             });
 
-            it('7: returns true if the number it is passed is a prime number', function () {
+            it('returns true if the number it is passed is a prime number', function () {
                 expect(eulerDebug.isPrime(7)).toEqual(true);
             });
 
-            it('11: returns true if the number it is passed is a prime number', function () {
+            it('returns true if the number it is passed is a prime number', function () {
                 expect(eulerDebug.isPrime(11)).toEqual(true);
             });
 

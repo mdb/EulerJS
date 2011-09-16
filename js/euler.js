@@ -283,15 +283,17 @@ if (typeof Euler === 'undefined' || !Euler) {
              *
              * What is the 10 001st prime number?
              *
+             * TODO: Optimize this as it's a even more of a beast than probFour.
+             *
              */
-            probSeven: function () {
+            probSeven: function (nthPrime) {
                 var primeCount = 0,
                     i = 0;
 
-                while (primeCount <= 10001) {
+                while (primeCount < nthPrime) {
                     i++;
 
-                    if (isPrime(i)) {
+                    if (privMethods.isPrime(i)) {
                         primeCount = primeCount + 1;    
                     }
                 }
