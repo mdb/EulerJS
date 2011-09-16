@@ -106,25 +106,13 @@ describe('Euler', function () {
         describe('isPrime', function () {
             it('returns true if the number it is passed is a prime number', function () {
                 expect(eulerDebug.isPrime(3)).toEqual(true);
-            });
-
-            it('returns true if the number it is passed is a prime number', function () {
                 expect(eulerDebug.isPrime(7)).toEqual(true);
-            });
-
-            it('returns true if the number it is passed is a prime number', function () {
                 expect(eulerDebug.isPrime(11)).toEqual(true);
             });
 
             it('returns false if the number it is passed is not a prime number', function () {
                 expect(eulerDebug.isPrime(6)).toEqual(false);
-            });
-
-            it('returns false if the number it is passed is not a prime number', function () {
                 expect(eulerDebug.isPrime(25)).toEqual(false);
-            });
-
-            it('returns false if the number it is passed is not a prime number', function () {
                 expect(eulerDebug.isPrime(12)).toEqual(false);
             });
         });
