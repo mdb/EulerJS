@@ -82,5 +82,11 @@ describe('Euler', function () {
                 expect(eulerDebug.sumOfSquares(1, 10)).toEqual(385);
             });
         });
+
+        describe('squareOfSum', function () {
+            it('returns the square of the sum of all numbers between a provided floor and ceiling', function () {
+                expect(eulerDebug.squareOfSum(1, 10)).toEqual(3025);
+            });
+        });
     });
 });

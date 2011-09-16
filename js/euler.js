@@ -102,6 +102,17 @@ if (typeof Euler === 'undefined' || !Euler) {
                     }
 
                     return sum;
+                },
+
+                squareOfSum: function (floor, ceiling) {
+                    var i,
+                        sum = 0;
+
+                    for (i=floor; i<=ceiling; i++) {
+                        sum = sum + i;
+                    }
+
+                    return (sum * sum);
                 }
             },
 
