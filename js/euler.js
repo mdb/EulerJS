@@ -113,6 +113,23 @@ if (typeof Euler === 'undefined' || !Euler) {
                     }
 
                     return (sum * sum);
+                },
+
+                // is the number passed prime?
+                isPrime: function (num) {
+                    var i,
+                        j;
+
+                    for (i = num; i > 1; i--) {
+                        for (j = i - 1; j > 1; j--) {
+                            if (i % j === 0) {
+                                return false;
+                            }
+                        }
+
+                        return true;
+                    }
+
                 }
             },
 
@@ -258,6 +275,29 @@ if (typeof Euler === 'undefined' || !Euler) {
                     squareOfSum = privMethods.squareOfSum(floor, ceiling);
 
                 return (squareOfSum - sumOfSquares);
+            },
+
+            /*
+             * By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, 
+             * we can see that the 6th prime is 13
+             *
+             * What is the 10 001st prime number?
+             *
+             */
+            probSeven: function () {
+                var primeCount = 0,
+                    i = 0;
+
+                while (primeCount <= 10001) {
+                    i++;
+
+                    if (isPrime(i)) {
+                        primeCount = primeCount + 1;    
+                    }
+                }
+
+                return i;
+                
             }
         };
 
