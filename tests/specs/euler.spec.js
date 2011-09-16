@@ -27,7 +27,7 @@ describe('Euler', function () {
         });
 
         describe('probFour', function () {
-            it('finds the largest palindrome made from the product of two 3-digit numbers', function () {
+            xit('finds the largest palindrome made from the product of two 3-digit numbers', function () {
                 expect(euler.probFour(999, 100)).toEqual(906609);
             });
         });
@@ -74,6 +74,12 @@ describe('Euler', function () {
 
             it('returns false if the string it is passed does not read the same forwards and backwards', function () {
                 expect(eulerDebug.isStringPalindrome('123')).toEqual(false);
+            });
+        });
+
+        describe('sumOfSquares', function () {
+            it('returns the sum of the squares between a provided floor and ceiling', function () {
+                expect(eulerDebug.sumOfSquares(1, 10)).toEqual(385);
             });
         });
     });

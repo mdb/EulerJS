@@ -91,6 +91,17 @@ if (typeof Euler === 'undefined' || !Euler) {
                     }
 
                     return true;
+                },
+
+                sumOfSquares: function (floor, ceiling) {
+                    var i,
+                        sum = 0;
+
+                    for (i=floor; i<=ceiling; i++) {
+                        sum = sum + (i * i);
+                    }
+
+                    return sum;
                 }
             },
 
@@ -208,9 +219,9 @@ if (typeof Euler === 'undefined' || !Euler) {
             /*
              * What is the smallest number divisible by each of the numbers 1 to 20?
              *
-             * 1. get a=[primes] & get comps=[comps] in array
-             * 2. take each a and multiply by each other a (a1, a2, etc) and if any aN * aM = b, push the b to c and pop it from b
-             * 3. with what is left in b, if bi % ai = 0, then bi/ai = x, then x % ai until it equals 0
+             * 1. get primes=[primes] & get comps=[comps] in array
+             * 2. take each prime and multiply by each other prime (p1, p2, etc) and if any pN * pM = comp, push the comp to c and pop it from comps 
+             * 3. with what is left in comps, if compi % primei = 0, then compi/primei = x, then x % primei until it equals 0
              * 
              */ 
             probFive: function (ceiling) {
@@ -224,6 +235,16 @@ if (typeof Euler === 'undefined' || !Euler) {
                         
                     }
                     */
+            },
+
+            /*
+             * Find the difference between the sum of the squares of the first one
+             * hundred natural numbers and the square of the sum.
+             */
+            probSix: function (ceiling) {
+                var sumOfSquares = privMethods.sumOfSquares(ceiling);
+                    squareOfSum = privMethods.squareOfSum(ceiling);
+                
             }
         };
 
