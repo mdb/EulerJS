@@ -31,6 +31,12 @@ describe('Euler', function () {
                 expect(euler.probFour(999, 100)).toEqual(906609);
             });
         });
+
+        describe('probSix', function () {
+            it('returns the difference between the sum of squares and the square of sums for all numbers between a floor and a ceiling', function () {
+                expect(euler.probSix(1, 100)).toEqual(25164150);
+            });
+        });
     });
 
     describe('Euler private methods', function () {
