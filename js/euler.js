@@ -10,10 +10,12 @@ if (typeof Euler === 'undefined' || !Euler) {
 
             privMethods = {
 
+                // get the next Fibonnaci number
                 getFib: function (nMinu1, nMinus2) {
                     return (nMinu1 + nMinus2);
                 },
 
+                // returns an object housing all the comps and all the primes below a ceiling
                 getPrimesAndComps: function(ceiling) {
                     var primes = [],
                         comps = [],
@@ -43,6 +45,7 @@ if (typeof Euler === 'undefined' || !Euler) {
                     };
                 },
 
+                // returns the product of all the numbers in an array
                 arrayProd: function (array) {
                     var prod = 1;
                         i;
@@ -59,6 +62,7 @@ if (typeof Euler === 'undefined' || !Euler) {
 
                 },
 
+                // identifies duplicate array items that occur in each of the two arrays it's passed
                 matchArrayItems: function (arrayOne, arrayTwo) {
                     var arrayOneLength = arrayOne.length,
                         arrayTwoLength = arrayTwo.length,
@@ -80,6 +84,7 @@ if (typeof Euler === 'undefined' || !Euler) {
                     
                 },
 
+                // checks if a string is palindromic
                 isStringPalindrome: function (string) {
                     var strLength = string.length,
                         i;
@@ -93,6 +98,7 @@ if (typeof Euler === 'undefined' || !Euler) {
                     return true;
                 },
 
+                // returns the sum of all the squares between a floor and a ceiling
                 sumOfSquares: function (floor, ceiling) {
                     var i,
                         sum = 0;
@@ -104,6 +110,7 @@ if (typeof Euler === 'undefined' || !Euler) {
                     return sum;
                 },
 
+                // returns the square of the sum of all the natural numbers between a floor and a ceiling
                 squareOfSum: function (floor, ceiling) {
                     var i,
                         sum = 0;
@@ -129,7 +136,6 @@ if (typeof Euler === 'undefined' || !Euler) {
 
                         return true;
                     }
-
                 }
             },
 
