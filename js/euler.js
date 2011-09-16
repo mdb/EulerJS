@@ -182,29 +182,27 @@ if (typeof Euler === 'undefined' || !Euler) {
 
             /*
              * Find the largest palindrome made from the product of two 3-digit numbers.
+             * TODO: Make this puppy not crash browsers.
              *
              */
             probFour: function (ceiling, floor) {
                 var i,
-                    prod;
+                    j,
+                    prod,
+                    largestPal = 0;
                 
+                // WARNING: this monster is a browser crasher
                 for (i=ceiling; i>=floor; i--) {
-                    for (b=i; b>=floor; b--) {
-                        prod = i * b;
+                    for (j=i; j>=floor; j--) {
+                        prod = i * j;
 
-                        /*
-                        console.log('i: ', i);
-                        console.log('b: ', b);
-                        console.log('prod: ', prod + '\n');
-                        */
-
-                        if (privMethods.isStringPalindrome(prod.toString())) {
-                            return prod;
-                            break;
+                        if (prod > largestPal && privMethods.isStringPalindrome(prod.toString())) {
+                            largestPal = prod;
                         }
                     }
-
                 }
+
+                return largestPal;
             },
 
             /*
