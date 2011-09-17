@@ -310,19 +310,42 @@ if (typeof Euler === 'undefined' || !Euler) {
              *
              * What is the 10 001st prime number?
              *
-             * TODO: Optimize this as it's a even more of a beast than probFour.
+             * TODO: Can this be further optimized?
+             *
+             * Performance stats:
+             *
+             *      real	71m26.794s
+             *      user	25m4.277s
+             *      sys	0m20.566s
              *
              */
             probSeven: function (nthPrime) {
                 var primeCount = 0,
-                    i = 0;
+                    primesUnderTwenty = privMethods.getPrimesAndComps(20).primes,
+                    i = 0,
+                    j,
+                    primeCandidate;
 
+                // so long as primeCount is less than nthPrime 
                 while (primeCount < nthPrime) {
                     i++;
+                    primeCandidate = true;
 
-                    if (privMethods.isPrime(i)) {
-                        primeCount = primeCount + 1;    
+                    // if it's not even and it's not divisible by any prime 2 - 20 
+                    if (i % 2 !== 0) {
+                        for (j=i; j<primesUnderTwenty.length; j++) {
+                            if (i % primesUnderTwenty[j] === 0) {
+                                primeCandidate = false;
+                                break;
+                            }
+                        }
                     }
+
+                    // if primeCandidate is true based on above criteria and isPrime is true, then count it
+                    if (primeCandidate && privMethods.isPrime(i)) {
+                        primeCount = primeCount + 1;
+                    }
+
                 }
 
                 return i;
