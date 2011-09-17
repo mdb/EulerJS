@@ -332,12 +332,10 @@ if (typeof Euler === 'undefined' || !Euler) {
                     primeCandidate = true;
 
                     // if it's not even and it's not divisible by any prime 2 - 20 
-                    if (i % 2 !== 0) {
-                        for (j=i; j<primesUnderTwenty.length; j++) {
-                            if (i % primesUnderTwenty[j] === 0) {
-                                primeCandidate = false;
-                                break;
-                            }
+                    for (j=i; j<primesUnderTwenty.length; j++) {
+                        if (i % primesUnderTwenty[j] === 0) {
+                            primeCandidate = false;
+                            break;
                         }
                     }
 
