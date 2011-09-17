@@ -32,6 +32,12 @@ describe('Euler', function () {
             });
         });
 
+        describe('probFive', function () {
+            it('finds the smallest number divisible by each of the numbers 1 to 20', function () {
+                expect(euler.probFive(20).toEqual(232792560));
+            });
+        });
+
         describe('probSix', function () {
             it('returns the difference between the sum of squares and the square of sums for all numbers between a floor and a ceiling', function () {
                 expect(euler.probSix(1, 100)).toEqual(25164150);

@@ -256,22 +256,38 @@ if (typeof Euler === 'undefined' || !Euler) {
              *
              * What is the smallest number divisible by each of the numbers 1 to 20?
              *
-             * 1. get primes=[primes] & get comps=[comps] in array
-             * 2. take each prime and multiply by each other prime (p1, p2, etc) and if any pN * pM = comp, push the comp to c and pop it from comps 
-             * 3. with what is left in comps, if compi % primei = 0, then compi/primei = x, then x % primei until it equals 0
-             * 
              */ 
             probFive: function (ceiling) {
-                var primes = getPrimesAndComps(ceiling).primes,
-                    comps = getPrimesAndComps(ceiling).comps,
-                    primesProd = privMethods.arrayProd(primes),
-                    finalList = privMethods.matchArrayItems(primes, comps);
+                var ceilingArray = [], // 2 - 20
+                    primes = privMethods.getPrimesAndComps(ceiling).primes,
+                    finalList = primes,
+                    i,
+                    j,
+                    iCount,
+                    k;
 
-                    /* 
-                    for () {
-                        
+                for (i=2; i<=ceiling; i++) {
+                    ceilingArray.push(i);
+                }
+
+                for (i=0; i<primes.length; i++) {
+                    iCount = 0;
+
+                    for (j=2; j<=ceiling; j++) {
+
+                        if (Math.pow(primes[i], j) <= ceiling) {
+                            iCount = iCount + 1;
+                        } else {
+                            break;
+                        }
                     }
-                    */
+                    
+                    for (k=1; k<=iCount; k++) {
+                        finalList.push(primes[i]);
+                    }
+                }
+
+                return privMethods.arrayProd(finalList);
             },
 
             /* Problem 6:
@@ -315,6 +331,7 @@ if (typeof Euler === 'undefined' || !Euler) {
             /* Problem 8:
              *
              * Find the greatest product of five consecutive digits in the 1000-digit number.
+             *
              *  73167176531330624919225119674426574742355349194934
              *  96983520312774506326239578318016984801869478851843
              *  85861560789112949495459501737958331952853208805511
