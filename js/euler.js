@@ -85,6 +85,7 @@ if (typeof Euler === 'undefined' || !Euler) {
                 },
 
                 // checks if a string is palindromic
+                // TODO: Figure out a better way to determine if # is palindromic. Says Trevor: there is a way to do this using only math, not converting to string
                 isStringPalindrome: function (string) {
                     var strLength = string.length,
                         i;
@@ -136,6 +137,25 @@ if (typeof Euler === 'undefined' || !Euler) {
 
                         return true;
                     }
+                },
+
+                getFactorsInRange: function(num, largestCandidate, smallestCandidate) {
+                    var i,
+                        factorOne,
+                        factorTwo;
+
+                    for (i = largestCandidate; i>=smallestCandidate; i--) {
+                        if (num % i === 0) {
+                            factorOne = i;
+                            factorTwo = num/i;
+                            break;
+                        }
+                    }
+
+                    return {
+                        'factorOne': factorOne,
+                        'factorTwo': factorTwo
+                    };
                 }
             },
 
@@ -229,10 +249,88 @@ if (typeof Euler === 'undefined' || !Euler) {
             /* Problem 4:
              *
              * Find the largest palindrome made from the product of two 3-digit numbers.
-             * TODO: Make this puppy not crash browsers.
+             * TODO: 
+             *      Does this even work? I don't know because it's such a beast; never seen it finish.
+             *      How to determine if number is palindrome using just Math?
              *
              */
             probFour: function (ceiling, floor) {
+                var i,
+                    multiplicantOne,
+                    multiplicantTwo,
+                    largestPal;
+
+                // Loop down from the largest possible candidate to smallest possible candidate 
+                for (i=ceiling * ceiling; i>=floor * floor; i--) {
+
+                    // Is the candidate divisble by 11? (We know that all six digit palindromes are multiples of 11)
+                    if (i % 11 === 0) {
+
+                        // Is the candidate a palindrome?
+                        if (privMethods.isStringPalindrome(i.toString())) {
+
+                            // If so, loop down through all 3 digit numbers
+                            for (j=ceiling; j>=floor; j--) {
+
+                                // Is the candidate divisible by the 3 digit number? Is the result of that division also a 3 digit number?
+                                if (i % j === 0 && (i/j).toString().length === 3) {
+
+                                    // If so, set the variables and break from the loop
+                                    largestPal = i,
+                                    multiplicantOne = j,
+                                    multiplicantTwo = i/j;
+                                    break;
+                                }
+                            }
+
+                        // if the candidate is not a palindrome but it is divisible by 11
+                        } else {
+
+                            // De-incrementing by 11
+                            for (k=i; k>=floor; k=k-11) {
+
+                                // Is the candidate a palindrome?
+                                if (privMethods.isStringPalindrome(k.toString())) {
+
+                                    // If so, loop down through all 3 digit numbers
+                                    for (l=ceiling; l>=floor; l--) {
+
+                                        // Is the candidate divisible by the 3 digit number? Is the result of that division also a 3 digit number?
+                                        if (k % l === 0 && (k/l).toString().length === 3) {
+
+                                            // If so, set the variables and break from the loop
+                                            largestPal = k,    
+                                            multiplicantOne = l,
+                                            multiplicantTwo = k/l;
+                                        }
+                                    }
+                                } 
+                            }
+                        }
+                    }
+                }
+
+                /*
+                 * get largest producst (ceiling * ceiling)
+                 * loop down from largest product to a floor of floor*floor
+                 *     is it divisible by 11?
+                 *          if so, is it palindromic?
+                 *              if so, get multiplicants by dividing it by ceiling, de-incrementing down unil % = 0 
+                 *                  loop down from ceiling to find i % ceiling-- = 0 
+                 *                      is i/ceiling 3 digits?
+                 *                          if so, set vars and break 
+                 *          if not, de-increment by 11
+                 *              is it palindromic?
+                 *                  (repeat logic form above)
+                 *
+                 */ 
+
+                return {
+                    'palindrome': largestPal,
+                    'multiplicantOne': multiplicantOne,
+                    'multiplicantTwo': multiplicantTwo
+                };
+            /*
                 var i,
                     j,
                     prod,
@@ -250,6 +348,8 @@ if (typeof Euler === 'undefined' || !Euler) {
                 }
 
                 return largestPal;
+            */
+            
             },
 
             /* Problem 5: TODO
